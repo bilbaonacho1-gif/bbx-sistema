@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0A0F1A">
+  <title>Recuperar contraseña · BBX Soluciones Financieras S.A.</title>
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/app/css/app.css">
+  <script src="/app/config.js"></script>
+  <script src="/app/vendor/supabase-2.45.4.js"></script>
+  <script type="module" src="/app/js/acceso.js"></script>
+</head>
+<body data-pagina="recuperar">
+<div class="auth">
+  <aside class="auth__art" aria-hidden="true">
+    <a class="brand-lg" href="/" data-logo><small>Soluciones Financieras S.A.</small></a>
+    <div class="auth__claim">
+      <p class="eyebrow">Finanzas empresariales</p>
+      <h2>Recuperá el acceso <em>en minutos.</em></h2>
+      <p>Te enviamos un enlace seguro a tu email para que elijas una nueva contraseña.</p>
+    </div>
+  </aside>
+  <main class="auth__panel">
+    <div class="auth__box">
+      <a class="auth__back" href="/">&larr; Volver al sitio</a>
+      <div class="brand-sm" data-logo><small>Soluciones Financieras S.A.</small></div>
+      <h1>Recuperar contraseña</h1>
+      <p>Ingresá el email de tu cuenta y te enviamos un enlace para crear una nueva contraseña.</p>
+      <div id="aviso"></div>
+      <form class="form" id="f-recuperar" novalidate>
+        <label class="field"><span class="sr">Email</span><span class="input-wrap" data-ico="mail"><input class="input" type="email" name="email" placeholder="Email" autocomplete="email" required></span></label>
+        <p class="form-error" data-error hidden></p>
+        <button class="btn btn--block" style="height:44px">Enviar enlace</button>
+      </form>
+      <div class="auth__links"><a href="/acceso/">Volver a iniciar sesión</a></div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+# Configuración para la CLI de Supabase (supabase link / db push / functions deploy).
+project_id = "bbx-sistema"
+
+[api]
+schemas = ["public"]
+max_rows = 1000
+
+[auth]
+site_url = "https://bbx-sistema.vercel.app"
+additional_redirect_urls = ["http://localhost:8000/**", "https://*.vercel.app/**"]
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+refresh_token_reuse_interval = 10
+enable_signup = true
+minimum_password_length = 10
+password_requirements = "lower_upper_letters_digits"
+
+[auth.email]
+enable_signup = true
+enable_confirmations = true
+double_confirm_changes = true
+secure_password_change = true
+max_frequency = "60s"
+
+[auth.sessions]
+inactivity_timeout = "8h"
+
+[functions.arca-factura]
+verify_jwt = true
+
+[functions.gestionar-usuario]
+verify_jwt = true
