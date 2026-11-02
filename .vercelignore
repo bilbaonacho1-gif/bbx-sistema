@@ -1,0 +1,4 @@
+supabase/
+docs/
+*.md
+tests/

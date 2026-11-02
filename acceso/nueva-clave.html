@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0A0F1A">
+  <title>Nueva contraseña · BBX Soluciones Financieras S.A.</title>
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/app/css/app.css">
+  <script src="/app/config.js"></script>
+  <script src="/app/vendor/supabase-2.45.4.js"></script>
+  <script type="module" src="/app/js/acceso.js"></script>
+</head>
+<body data-pagina="nueva-clave">
+<div class="auth">
+  <aside class="auth__art" aria-hidden="true">
+    <a class="brand-lg" href="/" data-logo><small>Soluciones Financieras S.A.</small></a>
+    <div class="auth__claim">
+      <p class="eyebrow">Finanzas empresariales</p>
+      <h2>Elegí una contraseña <em>segura.</em></h2>
+      <p>Usá una combinación que no utilices en otros sitios.</p>
+    </div>
+  </aside>
+  <main class="auth__panel">
+    <div class="auth__box">
+      <a class="auth__back" href="/">&larr; Volver al sitio</a>
+      <div class="brand-sm" data-logo><small>Soluciones Financieras S.A.</small></div>
+      <h1>Nueva contraseña</h1>
+      <p>Elegí la contraseña para tu cuenta.</p>
+      <div id="aviso"></div>
+      <form class="form" id="f-nueva" novalidate>
+        <label class="field"><span>Nueva contraseña</span><input class="input" type="password" name="password" autocomplete="new-password" minlength="10" required><span class="pw-meter"><i></i></span></label>
+        <label class="field"><span>Repetir contraseña</span><input class="input" type="password" name="password2" autocomplete="new-password" minlength="10" required></label>
+        <small class="muted">Mínimo 10 caracteres, con mayúsculas, minúsculas y números.</small>
+        <p class="form-error" data-error hidden></p>
+        <button class="btn btn--block" style="height:44px">Guardar contraseña</button>
+      </form>
+    </div>
+  </main>
+</div>
+</body>
+</html>

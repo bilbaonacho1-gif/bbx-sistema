@@ -1,0 +1,13 @@
+{
+  "name": "bbx-e2e",
+  "private": true,
+  "description": "Pruebas de punta a punta: un servidor que imita la API de Supabase sobre un Postgres local (con RLS) y Playwright.",
+  "type": "module",
+  "scripts": {
+    "mock": "node mock-supabase.mjs",
+    "test": "node e2e.mjs"
+  },
+  "devDependencies": {
+    "pg": "8.13.1"
+  }
+}

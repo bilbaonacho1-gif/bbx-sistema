@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="275 481 770 329">
+  <defs>
+    <path id="bbx-b" fill-rule="evenodd" d="M275 481H443A92 92 0 0 1 508.5 637.6A91 91 0 0 1 466 809H275V615H443A37 41 0 0 0 480 574A37 41 0 0 0 443 533H275ZM325 669H466A40 45 0 0 1 506 714A40 45 0 0 1 466 759H325Z"/>
+    <mask id="bbx-m1" maskUnits="userSpaceOnUse" x="0" y="0" width="1400" height="1400">
+      <rect width="1400" height="1400" fill="#fff"/>
+      <use href="#bbx-b" fill="#000" stroke="#000" stroke-width="48" stroke-linejoin="round"/>
+    </mask>
+    <mask id="bbx-m2" maskUnits="userSpaceOnUse" x="0" y="0" width="1400" height="1400">
+      <rect width="1400" height="1400" fill="#fff"/>
+      <use href="#bbx-b" x="247" fill="#000" stroke="#000" stroke-width="58" stroke-linejoin="round"/>
+    </mask>
+    <linearGradient id="bbx-g1" gradientUnits="userSpaceOnUse" x1="1010" y1="481" x2="770" y2="740">
+      <stop offset="0" stop-color="#2B80FF"/>
+      <stop offset=".4" stop-color="#004EFF"/>
+      <stop offset=".7" stop-color="#00269C"/>
+      <stop offset="1" stop-color="#001A66" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bbx-g2" gradientUnits="userSpaceOnUse" x1="795" y1="560" x2="870" y2="640">
+      <stop offset="0" stop-color="#0328C8"/>
+      <stop offset="1" stop-color="#1A57FF"/>
+    </linearGradient>
+  </defs>
+  <use class="lg-b1" href="#bbx-b" fill="#fff"/>
+  <g mask="url(#bbx-m1)"><use class="lg-b2" href="#bbx-b" x="247" fill="#fff"/></g>
+  <g mask="url(#bbx-m2)">
+    <path class="lg-x2" fill="url(#bbx-g2)" d="M760 558H813L897.5 641.6L863 679.8L793 600L760 571Z"/>
+    <path class="lg-x1" fill="url(#bbx-g1)" d="M976 481H1043L808 740H741Z"/>
+  </g>
+  <path class="lg-x3" fill="#fff" d="M918.6 665.7L1044 809H976L884 703.9Z"/>
+</svg>
