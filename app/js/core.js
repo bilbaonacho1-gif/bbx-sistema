@@ -6,6 +6,7 @@
 // Nunca se usa la clave service_role en el navegador.
 import { html, ic, esc } from "./ui.js";
 import { ensureSprite, logo } from "./icons.js";
+import { debeMostrarse, iniciarBienvenida } from "./bienvenida.js";
 
 let _sb = null;
 let _cfg = null;
@@ -88,7 +89,10 @@ export function pantallaSinConfig() {
  * Verifica sesión, perfil, estado y rol; si algo no corresponde, redirige.
  */
 export async function proteger(area) {
-  const quitar = splash();
+  // Después de iniciar sesión se muestra la bienvenida animada; si no, la pantalla de carga simple.
+  ensureSprite();
+  const bienvenida = debeMostrarse() ? iniciarBienvenida() : null;
+  const quitar = bienvenida ? () => bienvenida.listo() : splash();
   let cliente;
   try { cliente = await sb(); } catch (e) {
     if (e.message === "SIN_CONFIG") return pantallaSinConfig();
@@ -110,6 +114,7 @@ export async function proteger(area) {
     return null;
   }
   estado.perfil = perfil;
+  bienvenida?.saludar(perfil.nombre, perfil.rol === "cliente" ? "portal" : "admin");
 
   if (perfil.estado === "suspendido" || perfil.estado === "rechazado") {
     quitar();

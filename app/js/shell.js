@@ -17,7 +17,9 @@ export function iniciarShell({ sb, area, nav, rutas, inicio }) {
   // Quitar títulos de grupo que quedaron vacíos
   const visibles = items.filter((n, i) => !n.grupo || (items[i + 1] && !items[i + 1].grupo));
 
-  document.body.innerHTML = html`
+  // Se conserva la bienvenida animada (si se está reproduciendo) al dibujar la estructura
+  [...document.body.children].forEach((n) => { if (!n.classList.contains("bienvenida") && !n.querySelector?.("#bbx-logo")) n.remove(); });
+  document.body.insertAdjacentHTML("afterbegin", html`
   <a class="sr" href="#contenido">Saltar al contenido</a>
   <div class="app" id="app">
     <aside class="side" id="side" aria-label="Navegación">
@@ -46,7 +48,7 @@ export function iniciarShell({ sb, area, nav, rutas, inicio }) {
       </header>
       <main class="view" id="contenido" tabindex="-1"></main>
     </div>
-  </div>`;
+  </div>`.toString());
 
   ensureSprite();   // el body se reemplazó: volver a insertar el logo
   const app = $("#app");
