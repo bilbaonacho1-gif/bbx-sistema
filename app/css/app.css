@@ -569,3 +569,79 @@ p { margin: 0; }
   .app { display: block; }
   body { background: #fff; color: #000; }
 }
+
+/* =====================================================================
+   Bienvenida al iniciar sesión (app/js/bienvenida.js)
+   ===================================================================== */
+.bienvenida { position: fixed; inset: 0; z-index: 400; cursor: pointer; overflow: hidden; }
+.bv__mitad { position: absolute; inset: 0; overflow: hidden; background: var(--bg); transition: transform 1.25s var(--ease); }
+.bv__fondo {
+  position: absolute; inset: -6%;
+  background:
+    radial-gradient(42% 40% at 50% 46%, rgb(30 91 255 / 0.34), transparent 70%),
+    linear-gradient(180deg, rgb(10 15 26 / 0.35), rgb(10 15 26 / 0.85)),
+    url("/img/guilloche.jpg") 30% 50% / cover;
+  animation: bvFondo 5s var(--ease) both;
+}
+@keyframes bvFondo { from { transform: scale(1.18) rotate(-3deg); opacity: 0; } to { transform: none; opacity: 0.6; } }
+/* corte diagonal con el ángulo de la X */
+.bv__mitad--a { clip-path: polygon(0 0, 64% 0, 36% 100%, 0 100%); }
+.bv__mitad--b { clip-path: polygon(64% 0, 100% 0, 100% 100%, 36% 100%); }
+.bienvenida.is-open .bv__mitad--a { transform: translate(-72%, -22%); }
+.bienvenida.is-open .bv__mitad--b { transform: translate(72%, 22%); }
+.bienvenida.is-open { pointer-events: none; }
+
+.bv__centro {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0;
+  text-align: center; padding: 24px;
+  transition: opacity 0.6s var(--ease), transform 1.25s var(--ease), filter 0.6s var(--ease);
+}
+.bienvenida.is-open .bv__centro { opacity: 0; transform: scale(1.5); filter: blur(10px); }
+
+.bv__logo { position: relative; }
+.bv__marca { width: min(360px, 68vw); height: auto; overflow: hidden; display: block; }
+.bv-p { transform-box: fill-box; }
+.bv-b1 { animation: bvSube 0.95s var(--ease) 0.15s both; }
+.bv-b2 { animation: bvSube 0.95s var(--ease) 0.3s both; }
+.bv-x1 { animation: bvX1 0.95s var(--ease) 0.65s both; }
+.bv-x2 { animation: bvX2 0.85s var(--ease) 0.9s both; }
+.bv-x3 { animation: bvX3 0.85s var(--ease) 1s both; }
+@keyframes bvSube { from { transform: translateY(110%); } to { transform: none; } }
+@keyframes bvX1 { from { opacity: 0; transform: translate(45%, -60%); } to { opacity: 1; transform: none; } }
+@keyframes bvX2 { from { opacity: 0; transform: translate(-50%, -55%); } to { opacity: 1; transform: none; } }
+@keyframes bvX3 { from { opacity: 0; transform: translate(45%, 50%); } to { opacity: 1; transform: none; } }
+
+.bv__brillo {
+  position: absolute; inset: -30% -10%; pointer-events: none; overflow: hidden;
+  -webkit-mask-image: radial-gradient(closest-side, #000 60%, transparent);
+          mask-image: radial-gradient(closest-side, #000 60%, transparent);
+}
+.bv__brillo::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgb(255 255 255 / 0.4) 50%, transparent 65%);
+  transform: translateX(-100%); mix-blend-mode: overlay;
+  animation: bvBarrido 1.1s cubic-bezier(0.5, 0, 0.3, 1) 1.55s both;
+}
+@keyframes bvBarrido { to { transform: translateX(100%); } }
+
+.bv__razon {
+  margin-top: 22px; font-size: 11px; font-weight: 500; text-transform: uppercase; color: var(--text-2);
+  animation: bvRazon 1.2s var(--ease) 1.1s both;
+}
+@keyframes bvRazon { from { opacity: 0; letter-spacing: 0.9em; } to { opacity: 1; letter-spacing: 0.42em; } }
+.bv__linea {
+  display: block; width: min(260px, 50vw); height: 1.5px; margin: 22px auto 0;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  box-shadow: 0 0 18px rgb(30 91 255 / 0.8);
+  transform: scaleX(0); animation: bvLinea 1s var(--ease) 1.35s both;
+}
+@keyframes bvLinea { to { transform: scaleX(1); } }
+.bv__saludo { margin-top: 22px; font-size: clamp(20px, 3.2vw, 28px); font-weight: 400; letter-spacing: -0.02em; color: var(--text); min-height: 1.3em; animation: bvAparece 0.8s var(--ease) 1.6s both; }
+.bv__saludo b { font-weight: 600; color: #fff; }
+.bv__area { margin-top: 6px; font-size: 12.5px; color: var(--muted); letter-spacing: 0.04em; animation: bvAparece 0.8s var(--ease) 1.75s both; }
+@keyframes bvAparece { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* Saltear: acelera todo mientras terminan de cargar los datos */
+.bienvenida.is-rapida * { animation-duration: 0.2s !important; animation-delay: 0s !important; }
+@media (prefers-reduced-motion: reduce) { .bienvenida { display: none; } }

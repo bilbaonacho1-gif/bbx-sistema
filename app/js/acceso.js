@@ -2,6 +2,7 @@
 import { html, raw, esc, cuitValido, errMsg, $ } from "./ui.js";
 import { icon, ensureSprite, logo } from "./icons.js";
 import { sb, cargarConfig, registrar } from "./core.js";
+import { pedirBienvenida } from "./bienvenida.js";
 
 ensureSprite();
 document.querySelectorAll("[data-logo]").forEach((el) => el.insertAdjacentHTML("afterbegin", logo()));
@@ -73,6 +74,7 @@ if (!cfg) {
           return errorForm(form, m);
         }
         await registrar("login");
+        pedirBienvenida();
         await redirigir(cliente, data.user.id, params.get("next"));
       });
     });

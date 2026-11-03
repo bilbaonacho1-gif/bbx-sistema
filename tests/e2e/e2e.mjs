@@ -129,6 +129,12 @@ async function main() {
   await page.fill('[name="password"]', "Prueba12345");
   await page.click("#f-login button.btn");
   await page.waitForURL(/\/admin\//);
+  // Bienvenida animada: aparece una vez después del login y se abre sola
+  await page.waitForSelector(".bienvenida .bv__saludo b", { timeout: 8000 });
+  await page.waitForTimeout(1900);
+  await captura(page, "bienvenida");
+  await page.waitForSelector(".bienvenida", { state: "detached", timeout: 10000 });
+  ok("animación de bienvenida al entrar");
   await esperarVista(page);
   await page.waitForSelector("#ch-capital svg");
   await captura(page, "dashboard");
@@ -293,6 +299,7 @@ async function main() {
   await page.fill('[name="password"]', "Cliente12345");
   await page.click("#f-login button.btn");
   await page.waitForURL(/\/portal\//);
+  await page.waitForSelector(".bienvenida", { state: "detached", timeout: 10000 });
   await esperarVista(page);
   await captura(page, "portal-cuenta");
   ok("portal: mi cuenta");
