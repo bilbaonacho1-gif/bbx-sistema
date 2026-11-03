@@ -1038,7 +1038,7 @@ end $$;
 
 -- Firma electrónica por aceptación: guarda hash de lo firmado, IP y navegador
 create or replace function public.firmar_formulario(p_id uuid, p_nombre text, p_dni text, p_acepto boolean)
-returns uuid language plpgsql security definer set search_path = public as $$
+returns uuid language plpgsql security definer set search_path = public, extensions as $$  -- pgcrypto vive en extensions
 declare f formularios%rowtype; p plantillas_formulario%rowtype; v_firma uuid; v_hash text;
 begin
   if not p_acepto then raise exception 'Tenés que aceptar los términos para firmar' using errcode = '22023'; end if;
