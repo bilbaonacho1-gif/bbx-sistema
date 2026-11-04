@@ -47,7 +47,7 @@
 /* La sección de servicios es clara */
 .services {
   --bg-1: #E6EAF2;
-  --bg-2: #FFFFFF;
+  --bg-2: #F2F4F8;
   --surface: #EEF1F7;
   --fg: #0A0F1A;
   --text: #3A4559;
@@ -60,7 +60,7 @@
   --placeholder: #8A93A6;
   --error: #B42318;
   --bg-rgb: 230 234 242;
-  --bg2-rgb: 255 255 255;
+  --bg2-rgb: 242 244 248;
   --surface-rgb: 238 241 247;
   --fg-rgb: 10 15 26;
   --accent-rgb: 30 91 255;
@@ -101,10 +101,7 @@ h2 { font-size: var(--step-3); }
 h3 { font-size: 1.0625rem; font-weight: 500; letter-spacing: -0.01em; }
 h1 em, h2 em {
   font-style: normal;
-  background: linear-gradient(90deg, var(--accent-2), var(--em-end));
-  -webkit-background-clip: text;
-          background-clip: text;
-  color: transparent;
+  color: var(--accent-2);
 }
 p { margin: 0; }
 a { color: var(--accent-2); }
@@ -149,7 +146,6 @@ a { color: var(--accent-2); }
   transition: transform 0.8s var(--ease);
 }
 .btn:hover { background: var(--accent-hover); border-color: var(--accent-hover); transform: translateY(-2px); }
-.btn:hover::after { transform: translateX(120%); }
 .btn-outline { background: transparent; border-color: var(--accent-2); color: var(--fg); box-shadow: none; }
 .btn-outline:hover { background: rgb(var(--accent2-rgb) / 0.12); border-color: var(--accent-2); }
 .btn-small { padding: 0.7em 1.15em; font-size: 0.875rem; }
@@ -172,7 +168,6 @@ a { color: var(--accent-2); }
   border-right: 1.5px solid currentColor;
   transform: translateY(-50%) rotate(45deg);
 }
-.btn:hover .arr, .btn:focus-visible .arr { transform: translateX(4px); }
 
 .link-more {
   display: inline-flex;
@@ -211,7 +206,7 @@ a { color: var(--accent-2); }
   border-right: 1.5px solid var(--accent-2);
   transform: translateY(-50%) rotate(45deg);
 }
-.link-more:hover .circ { transform: translateX(4px); background: rgb(var(--accent2-rgb) / 0.15); }
+.link-more:hover .circ { background: rgb(var(--accent2-rgb) / 0.15); }
 
 .ico { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none; }
 
@@ -541,9 +536,9 @@ a { color: var(--accent-2); }
 .chips li { display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px 10px 12px; border: 1px solid rgb(var(--accent-rgb) / 0.28); border-radius: 999px; background: rgb(var(--bg2-rgb) / 0.6); color: var(--fg); font-size: 0.875rem; font-weight: 500; }
 .chips .ico { width: 20px; height: 20px; color: var(--accent); }
 
-/* Tarjetas grandes con foto, panel de vidrio, inclinación 3D y brillo que sigue al mouse */
+/* Tarjetas grandes con foto y panel sólido */
 .xcards { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.xcard { position: relative; min-width: 0; perspective: 1000px; }
+.xcard { position: relative; min-width: 0; }
 .xcard__tilt {
   --rx: 0deg; --ry: 0deg; --mx: 50%; --my: 50%;
   position: relative;
@@ -551,18 +546,15 @@ a { color: var(--accent-2); }
   border-radius: 24px;
   overflow: hidden;
   background: var(--bg-2);
-  transform: rotateX(var(--rx)) rotateY(var(--ry)) translateY(var(--lift, 0px));
-  transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
-  box-shadow: 0 30px 60px -36px rgb(var(--bg2-rgb) / 0.8);
-  will-change: transform;
+  border: 1px solid var(--line);
+  transition: border-color 0.4s var(--ease);
 }
-.xcard.is-tilting .xcard__tilt { transition: transform 0.12s linear, box-shadow 0.6s var(--ease); }
-.xcard:hover .xcard__tilt, .xcard:focus-within .xcard__tilt { --lift: -8px; box-shadow: 0 46px 80px -36px rgb(var(--bg2-rgb) / 0.9); }
+.xcard:hover .xcard__tilt, .xcard:focus-within .xcard__tilt { border-color: var(--accent); }
 .xcard__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); transition: transform 1.2s var(--ease), filter 1.2s var(--ease); filter: saturate(0.9) brightness(0.85); }
 .xcard:nth-child(1) .xcard__img { object-position: 72% 40%; }
 .xcard:nth-child(2) .xcard__img { object-position: 78% 30%; }
 .xcard:nth-child(3) .xcard__img { object-position: 70% 50%; }
-.xcard:hover .xcard__img, .xcard:focus-within .xcard__img { transform: scale(1.12); filter: saturate(1.05) brightness(1); }
+.xcard:hover .xcard__img, .xcard:focus-within .xcard__img { filter: saturate(1.05) brightness(1); }
 .xcard__tilt::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(var(--bg-rgb) / 0.75) 0%, rgb(var(--bg-rgb) / 0) 55%); pointer-events: none; }
 .xcard__glass {
   position: absolute;
@@ -573,14 +565,9 @@ a { color: var(--accent-2); }
   display: grid;
   gap: 12px;
   padding: 20px;
-  border: 1px solid rgb(var(--fg-rgb) / 0.22);
-  border-radius: 18px;
-  background: rgb(var(--surface-rgb) / 0.42);
-  backdrop-filter: blur(16px) saturate(1.3);
-  -webkit-backdrop-filter: blur(16px) saturate(1.3);
-  transition: background-color 0.5s var(--ease), border-color 0.5s var(--ease);
+  border-radius: 14px;
+  background: #0F1E36;
 }
-.xcard:hover .xcard__glass { background: rgb(var(--surface-rgb) / 0.6); border-color: rgb(var(--accent2-rgb) / 0.45); }
 .xcard__top { display: flex; align-items: center; gap: 14px; }
 .xcard__ico { display: grid; place-items: center; width: 42px; height: 42px; flex: none; border-radius: 50%; background: rgb(var(--fg-rgb) / 0.14); color: var(--accent-2); }
 .xcard__ico .ico { width: 20px; height: 20px; }
@@ -599,7 +586,7 @@ a { color: var(--accent-2); }
 }
 .xcard { cursor: pointer; }
 .xcard__go .arr { width: 14px; }
-.xcard:hover .xcard__go, .xcard__go:focus-visible { background: var(--accent-2); border-color: var(--accent-2); color: var(--bg-2); transform: rotate(-45deg); }
+.xcard:hover .xcard__go, .xcard__go:focus-visible { background: var(--accent); border-color: var(--accent); color: #fff; }
 .xcard__glare {
   position: absolute;
   inset: 0;
@@ -610,7 +597,7 @@ a { color: var(--accent-2); }
   transition: opacity 0.4s var(--ease);
   mix-blend-mode: soft-light;
 }
-.xcard.is-tilting .xcard__glare { opacity: 1; }
+.xcard__glare { display: none; }
 
 
 /* Respuestas rápidas: columnas numeradas con preguntas, al estilo de Coralia */
@@ -714,11 +701,10 @@ a { color: var(--accent-2); }
 .ticks li { display: flex; gap: 12px; align-items: center; color: var(--text); }
 .ticks li::before {
   content: "";
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 2px;
   flex: none;
-  border-radius: 50%;
-  background: rgb(var(--accent2-rgb) / 0.16) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.5l2.5 2.5L13 6.5' fill='none' stroke='%237FA3FF' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 18px no-repeat;
+  background: var(--accent-2);
 }
 
 .cheque {
@@ -802,7 +788,7 @@ select option { background: var(--surface); }
 .js .values__list .reveal.is-visible .ico * { stroke-dashoffset: 0; }
 
 /* Frase que se enciende palabra por palabra */
-.statement { padding-block: 140px; background: radial-gradient(60% 80% at 80% 50%, rgb(var(--accent-rgb) / 0.25), transparent 70%), var(--bg-2); }
+.statement { padding-block: 140px; background: var(--bg-2); border-block: 1px solid var(--line); }
 .statement__text { font-family: var(--font-display); font-size: clamp(1.8rem, 1.1rem + 2.8vw, 3.4rem); line-height: 1.15; letter-spacing: -0.03em; font-weight: 500; max-width: 24ch; color: var(--fg); text-wrap: pretty; }
 .statement__text em { font-style: normal; }
 .js .statement__text .w { color: rgb(var(--fg-rgb) / 0.2); transition: color 0.45s var(--ease); }
@@ -953,7 +939,6 @@ select option { background: var(--surface); }
 
 /* 04 Contacto */
 .contact { position: relative; padding-block: 130px; background: var(--bg-1); border-top: 1px solid var(--line); overflow: hidden; }
-.contact::before { content: ""; position: absolute; right: -10%; top: -20%; width: 60%; height: 90%; background: radial-gradient(closest-side, rgb(var(--accent-rgb) / 0.3), transparent); pointer-events: none; }
 .contact-grid { position: relative; display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 64px; align-items: start; }
 .contact-list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 16px; }
 .contact-list li { display: flex; align-items: center; gap: 14px; color: var(--fg); font-weight: 500; min-width: 0; }
@@ -1131,3 +1116,8 @@ select option { background: var(--surface); }
   .demo__txt span { max-height: none; opacity: 1; }
   .js .statement__text .w { color: var(--fg); }
 }
+
+/* Enlaces legales del pie */
+.footer-legal { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-bottom: 10px; }
+.footer-legal a { color: var(--muted); font-size: var(--step--1); text-decoration: none; }
+.footer-legal a:hover { color: var(--fg); text-decoration: underline; }
