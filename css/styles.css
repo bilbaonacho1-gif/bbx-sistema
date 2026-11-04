@@ -1107,3 +1107,22 @@ select option { background: var(--surface); }
 .footer-legal { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-bottom: 10px; }
 .footer-legal a { color: var(--muted); font-size: var(--step--1); text-decoration: none; }
 .footer-legal a:hover { color: var(--fg); text-decoration: underline; }
+
+/* Portal de clientes: invitación a crear cuenta o iniciar sesión */
+.portal-cta { padding-block: 120px; background: var(--bg-1); border-top: 1px solid var(--line); }
+.portal-cta__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: center; }
+.portal-cta__copy { display: grid; gap: 20px; justify-items: start; max-width: 520px; }
+.portal-cta__copy > p:not(.eyebrow):not(.fine) { color: var(--muted); font-weight: 300; }
+.portal-cta__acciones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+.portal-cta__lista { margin: 0; border-top: 1px solid var(--line-strong); }
+.portal-cta__lista div { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 16px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.portal-cta__lista dt { color: var(--fg); font-family: var(--font-display); font-weight: 500; font-size: 1.0625rem; }
+.portal-cta__lista dd { margin: 0; color: var(--muted); font-weight: 300; }
+@media (max-width: 960px) {
+  .portal-cta { padding-block: 88px; }
+  .portal-cta__grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+}
+@media (max-width: 640px) {
+  .portal-cta__lista div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .portal-cta__acciones .btn { flex: 1 1 auto; }
+}
