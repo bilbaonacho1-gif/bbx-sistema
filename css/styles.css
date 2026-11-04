@@ -101,7 +101,7 @@ h2 { font-size: var(--step-3); }
 h3 { font-size: 1.0625rem; font-weight: 500; letter-spacing: -0.01em; }
 h1 em, h2 em {
   font-style: normal;
-  color: var(--accent-2);
+  color: inherit;
 }
 p { margin: 0; }
 a { color: var(--accent-2); }
@@ -471,7 +471,7 @@ a { color: var(--accent-2); }
 .stat dt { font-size: 0.8125rem; color: var(--muted); }
 
 /* ---------- Secciones numeradas ---------- */
-.numbered { position: relative; display: grid; gap: 20px; justify-items: start; padding-left: 44px; min-width: 0; max-width: 560px; }
+.numbered { position: relative; display: grid; gap: 20px; justify-items: start; min-width: 0; max-width: 560px; }
 .numbered > p:not(.eyebrow) { color: var(--muted); font-weight: 300; max-width: 50ch; }
 .num {
   position: absolute;
@@ -480,18 +480,6 @@ a { color: var(--accent-2); }
   font: 500 0.75rem var(--font-mono);
   color: var(--fg);
 }
-.numbered::before {
-  content: "";
-  position: absolute;
-  left: 4px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: linear-gradient(180deg, var(--accent-2), rgb(var(--accent2-rgb) / 0.1));
-  transform-origin: top;
-}
-.js .numbered.reveal::before { transform: scaleY(0); transition: transform 1.4s var(--ease) 0.25s; }
-.js .numbered.reveal.is-visible::before { transform: scaleY(1); }
 
 /* 01 Nosotros: texto a la izquierda, ciudad a la derecha */
 .split { position: relative; min-height: 620px; display: flex; align-items: center; padding-block: 120px; overflow: hidden; background: var(--bg-1); }
@@ -793,7 +781,7 @@ select option { background: var(--surface); }
 .statement__text em { font-style: normal; }
 .js .statement__text .w { color: rgb(var(--fg-rgb) / 0.2); transition: color 0.45s var(--ease); }
 .js .statement__text .w.is-lit { color: var(--fg); }
-.js .statement__text em .w.is-lit { color: var(--accent-2); }
+.js .statement__text em .w.is-lit { color: var(--fg); }
 
 /* Cómo funciona */
 .process { padding-block: 120px; background: var(--bg-1); border-top: 1px solid var(--line); }
@@ -1055,7 +1043,6 @@ select option { background: var(--surface); }
   .cheque-result { grid-template-columns: 1fr 1fr; }
   .result-main { grid-column: 1 / -1; }
   .contact-form { padding: 22px; }
-  .numbered { padding-left: 30px; }
   .split__media, .why__media { height: 260px; }
   .statement { padding-block: 96px; }
   .process, .contact { padding-block: 88px; }
@@ -1110,7 +1097,6 @@ select option { background: var(--surface); }
   .js .slide__title .ln > span { transform: none; }
   .js .reveal, .js .cheque.reveal { opacity: 1; transform: none; filter: none; }
   .js .media-reveal { clip-path: none; }
-  .js .numbered.reveal::before { transform: none; }
   .js .values__list .reveal .ico * { stroke-dashoffset: 0; }
   .notif__check svg { stroke-dashoffset: 0; }
   .demo__txt span { max-height: none; opacity: 1; }
