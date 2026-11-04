@@ -243,7 +243,7 @@
                 <dl class="qsim" data-sim="500000,30">
                   <div><dt data-i18n="t67">Recibís hoy</dt><dd class="qsim__neto">–</dd></div>
                   <div><dt data-i18n="t69">Descuento</dt><dd class="qsim__desc">–</dd></div>
-                  <div><dt data-i18n="q_rate">Tasa mensual</dt><dd class="qsim__tasa">–</dd></div>
+                  <div><dt data-i18n="q_rate">TNA</dt><dd class="qsim__tasa">–</dd></div>
                 </dl>
                 <p class="qpanel__note" data-i18n="q_note">Cálculo de referencia. No incluye gastos ni impuestos.</p>
                 <button class="link-more qsim__go" type="button"><span data-i18n="q_open">Abrir en el cotizador</span> <i class="circ" aria-hidden="true"></i></button>
@@ -260,7 +260,7 @@
                 <dl class="qsim" data-sim="2000000,90">
                   <div><dt data-i18n="t67">Recibís hoy</dt><dd class="qsim__neto">–</dd></div>
                   <div><dt data-i18n="t69">Descuento</dt><dd class="qsim__desc">–</dd></div>
-                  <div><dt data-i18n="q_rate">Tasa mensual</dt><dd class="qsim__tasa">–</dd></div>
+                  <div><dt data-i18n="q_rate">TNA</dt><dd class="qsim__tasa">–</dd></div>
                 </dl>
                 <p class="qpanel__note" data-i18n="q_note">Cálculo de referencia. No incluye gastos ni impuestos.</p>
                 <button class="link-more qsim__go" type="button"><span data-i18n="q_open">Abrir en el cotizador</span> <i class="circ" aria-hidden="true"></i></button>
@@ -406,8 +406,8 @@
               <input id="cot-fecha" type="date">
             </div>
             <div class="field">
-              <label for="cot-tasa" data-i18n="t66">Tasa mensual (%)</label>
-              <input id="cot-tasa" type="number" min="0" max="30" step="0.1" value="3.5">
+              <label for="cot-tasa" data-i18n="t66">Tasa nominal anual · TNA (%)</label>
+              <input id="cot-tasa" type="number" min="0" max="300" step="0.5" value="42">
             </div>
           </div>
         </form>
@@ -427,7 +427,7 @@
           </div>
         </dl>
         <p class="micr" aria-hidden="true">000123  285000  0007  4421</p>
-        <p class="fine" data-i18n="t70">Cálculo de referencia con descuento simple. La tasa final depende del librador, el plazo y el tipo de cheque. No incluye gastos ni impuestos.</p>
+        <p class="fine" data-i18n="t70">Cálculo de referencia con descuento simple sobre la tasa nominal anual (TNA, base 365 días). La tasa final depende del librador, el plazo y el tipo de cheque. No incluye gastos ni impuestos.</p>
         <a class="btn btn-block" href="#contacto" id="cot-cta"><span data-i18n="t71">Pedir cotización real</span> <i class="arr" aria-hidden="true"></i></a>
       </aside>
     </div>

@@ -23,7 +23,7 @@ const waFloat = document.querySelector(".wa-float");
    El español está en el HTML; el inglés, en este diccionario.
    ========================================================= */
 const EN = {
-  "q_rate": "Monthly rate",
+  "q_rate": "Annual rate (TNA)",
   "q_note": "Estimate. Fees and taxes not included.",
   "q_open": "Open in the quote tool",
   "q_lbl_concept": "Concepts",
@@ -100,11 +100,11 @@ const EN = {
   "t63": "How much do you get for your cheque?",
   "t64": "Cheque amount",
   "t65": "Due date",
-  "t66": "Monthly rate (%)",
+  "t66": "Nominal annual rate · TNA (%)",
   "t67": "You get today",
   "t68": "Days to due date",
   "t69": "Discount",
-  "t70": "Estimate using simple discount. The final rate depends on the drawer, the term and the type of cheque. Fees and taxes not included.",
+  "t70": "Estimate using simple discount on the nominal annual rate (TNA, 365-day basis). The final rate depends on the drawer, the term and the type of cheque. Fees and taxes not included.",
   "t71": "Request a real quote",
   "t72": "More than liquidity, <em>trust.</em>",
   "t73": "Every transaction starts with a written quote: amount, rate, days and discount. No fine print, with an advisor who knows your case from start to finish.",
@@ -544,8 +544,8 @@ function resultado() {
   const monto = parseMoney(montoInput.value);
   const dias = daysUntil(fechaInput.value);
   const tasa = Math.max(0, parseFloat(tasaInput.value) || 0) / 100;
-  // Descuento simple: importe × tasa mensual × (días / 30)
-  const descuento = Math.min(monto, monto * tasa * (dias / 30));
+  // Descuento simple sobre la tasa nominal anual: importe × TNA × (días / 365)
+  const descuento = Math.min(monto, monto * tasa * (dias / 365));
   return { monto, dias, descuento, neto: monto - descuento };
 }
 
@@ -645,7 +645,7 @@ function flash(el) {
 function simValues(sim) {
   const [monto, dias] = sim.split(",").map(Number);
   const tasa = Math.max(0, parseFloat(tasaInput.value) || 0) / 100;
-  const descuento = Math.min(monto, monto * tasa * (dias / 30));
+  const descuento = Math.min(monto, monto * tasa * (dias / 365));   // TNA, base 365
   return { monto, dias, tasa, descuento, neto: monto - descuento };
 }
 function fillSim(panel) {
