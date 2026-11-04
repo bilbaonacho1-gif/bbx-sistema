@@ -1132,12 +1132,12 @@ select option { background: var(--surface); }
    Las tarjetas con foto y la apertura conservan su versión oscura.
    ===================================================================== */
 html[data-theme="claro"] {
-  --bg-1: #E9EDF4;
-  --bg-2: #F5F7FA;
-  --surface: #FFFFFF;
+  --bg-1: #D3DDEF;
+  --bg-2: #E1E9F6;
+  --surface: #EDF2FB;
   --fg: #0A0F1A;
-  --text: #2E3A4F;
-  --muted: #56627A;
+  --text: #22304A;
+  --muted: #4A5872;
   --accent: #1E5BFF;
   --accent-hover: #1747CC;
   --accent-2: #1A4FE0;
@@ -1145,18 +1145,18 @@ html[data-theme="claro"] {
   --em-end: #0F1E36;
   --placeholder: #8A93A6;
   --error: #B42318;
-  --bg-rgb: 233 237 244;
-  --bg2-rgb: 245 247 250;
-  --surface-rgb: 255 255 255;
+  --bg-rgb: 211 221 239;
+  --bg2-rgb: 225 233 246;
+  --surface-rgb: 237 242 251;
   --fg-rgb: 10 15 26;
   --accent-rgb: 30 91 255;
   --accent2-rgb: 26 79 224;
-  --line: rgb(10 15 26 / 0.10);
-  --line-strong: rgb(10 15 26 / 0.18);
+  --line: rgb(15 30 54 / 0.12);
+  --line-strong: rgb(15 30 54 / 0.2);
   color-scheme: light;
 }
 /* En modo claro la sección de Servicios toma un tono apenas más oscuro para separarse */
-html[data-theme="claro"] .services { --bg-1: #DDE3EC; --bg-2: #E9EDF4; --bg-rgb: 221 227 236; --bg2-rgb: 233 237 244; }
+html[data-theme="claro"] .services { --bg-1: #C7D4EC; --bg-2: #D6E0F2; --bg-rgb: 199 212 236; --bg2-rgb: 214 224 242; }
 
 /* Botón de tema */
 .tema-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
@@ -1178,3 +1178,31 @@ body { transition: background-color 0.3s; }
   .nav-cta .arr { display: none; }
   .brand-logo { width: 78px; }
 }
+
+/* Modo claro: bandas azul marino intercaladas (portada, frase destacada,
+   portal de clientes y pie) para que no sea todo claro */
+html[data-theme="claro"] :is(.hero, .statement, .portal-cta, .site-footer, .site-header:not(.is-solid)) {
+  --bg-1: #0B1424;
+  --bg-2: #0F1E36;
+  --surface: #132441;
+  --fg: #FFFFFF;
+  --text: #DCE2EC;
+  --muted: #9AA8C2;
+  --accent: #1E5BFF;
+  --accent-hover: #3A70FF;
+  --accent-2: #7FA3FF;
+  --em-end: #F2F4F8;
+  --placeholder: #6B7894;
+  --bg-rgb: 11 20 36;
+  --bg2-rgb: 15 30 54;
+  --surface-rgb: 19 36 65;
+  --fg-rgb: 220 226 236;
+  --accent-rgb: 30 91 255;
+  --accent2-rgb: 127 163 255;
+  --line: rgb(220 226 236 / 0.12);
+  --line-strong: rgb(220 226 236 / 0.22);
+  color: var(--text);
+  color-scheme: dark;
+}
+html[data-theme="claro"] .portal-cta { background: #0F1E36; }
+html[data-theme="claro"] .statement { background: #132441; }
