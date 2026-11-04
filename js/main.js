@@ -445,15 +445,17 @@ if (!calm) {
     steps[cur].classList.remove("is-active");
     steps[cur].setAttribute("aria-selected", "false");
     steps[cur].style.setProperty("--p", 0);
-    screens[cur].classList.remove("is-active");
-    screens[cur].hidden = true;
+    screens[cur]?.classList.remove("is-active");
+    if (screens[cur]) screens[cur].hidden = true;
     cur = (i + steps.length) % steps.length;
     steps[cur].classList.add("is-active");
     steps[cur].setAttribute("aria-selected", "true");
-    screens[cur].hidden = false;
-    // reinicia las animaciones de la pantalla
-    void screens[cur].offsetWidth;
-    screens[cur].classList.add("is-active");
+    if (screens[cur]) {
+      screens[cur].hidden = false;
+      // reinicia las animaciones de la pantalla
+      void screens[cur].offsetWidth;
+      screens[cur].classList.add("is-active");
+    }
     t0 = performance.now();
   }
 
