@@ -827,7 +827,7 @@ select option { background: var(--surface); }
 
 /* Demo interactiva: pasos a la izquierda, teléfono a la derecha */
 .process { position: relative; overflow: hidden; }
-.demo { position: relative; display: grid; grid-template-columns: 1fr 380px; gap: 72px; align-items: center; }
+.demo { position: relative; display: grid; grid-template-columns: minmax(0, 820px); gap: 72px; align-items: center; }
 .demo__side { min-width: 0; }
 .demo .section-head { margin-bottom: 32px; }
 .demo__steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
