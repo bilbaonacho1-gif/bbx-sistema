@@ -1179,9 +1179,9 @@ body { transition: background-color 0.3s; }
   .brand-logo { width: 78px; }
 }
 
-/* Modo claro: bandas azul marino intercaladas (portada, frase destacada,
+/* Modo claro: bandas azul marino intercaladas (frase destacada,
    portal de clientes y pie) para que no sea todo claro */
-html[data-theme="claro"] :is(.hero, .statement, .portal-cta, .site-footer, .site-header:not(.is-solid)) {
+html[data-theme="claro"] :is(.statement, .portal-cta, .site-footer) {
   --bg-1: #0B1424;
   --bg-2: #0F1E36;
   --surface: #132441;
@@ -1206,3 +1206,53 @@ html[data-theme="claro"] :is(.hero, .statement, .portal-cta, .site-footer, .site
 }
 html[data-theme="claro"] .portal-cta { background: #0F1E36; }
 html[data-theme="claro"] .statement { background: #132441; }
+
+/* ---------- Modo claro: portada clara ----------
+   La foto de la ciudad se tiñe de azul y se funde con el fondo claro a la izquierda. */
+html[data-theme="claro"] .hero { background: var(--bg-1); }
+html[data-theme="claro"] .slide__bg img { filter: grayscale(1) contrast(0.85) brightness(1.35); }
+html[data-theme="claro"] .slide__bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #1E5BFF;
+  mix-blend-mode: color;
+  opacity: 0.85;
+}
+html[data-theme="claro"] .slide__bg::after {
+  z-index: 2;
+  background:
+    linear-gradient(90deg, rgb(var(--bg-rgb) / 0.98) 0%, rgb(var(--bg-rgb) / 0.9) 34%, rgb(var(--bg-rgb) / 0.2) 66%, rgb(var(--bg-rgb) / 0.05) 85%),
+    linear-gradient(180deg, rgb(var(--bg-rgb) / 0.75) 0%, rgb(var(--bg-rgb) / 0) 22%),
+    linear-gradient(0deg, rgb(var(--bg-rgb) / 1) 0%, rgb(var(--bg-rgb) / 0) 38%);
+}
+@media (max-width: 640px) {
+  html[data-theme="claro"] .slide__bg::after {
+    background: linear-gradient(0deg, rgb(var(--bg-rgb) / 1) 12%, rgb(var(--bg-rgb) / 0.82) 60%, rgb(var(--bg-rgb) / 0.6) 100%);
+  }
+}
+
+/* ---------- Modo claro: detalles azules de fondo ----------
+   La X del logo en trazo fino y la trama de seguridad de los cheques, muy suaves. */
+html[data-theme="claro"] { --x-trazo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='725 471 332 349' fill='none' stroke='%231E5BFF' stroke-opacity='0.3' stroke-width='1.2' stroke-linejoin='round'%3E%3Cpath vector-effect='non-scaling-stroke' d='M790 558H813L897.5 641.6L863 679.8L793 600Z'/%3E%3Cpath vector-effect='non-scaling-stroke' d='M976 481H1043L808 740H741Z'/%3E%3Cpath vector-effect='non-scaling-stroke' d='M918.6 665.7L1044 809H976L884 703.9Z'/%3E%3C/svg%3E"); }
+html[data-theme="claro"] :is(.split, .discover, .why, .contact) { background-repeat: no-repeat; }
+html[data-theme="claro"] .split { background-image: var(--x-trazo); background-size: 340px auto; background-position: -170px calc(100% + 150px); }
+html[data-theme="claro"] .discover { background-image: var(--x-trazo), var(--x-trazo); background-size: 300px auto, 150px auto; background-position: calc(100% + 60px) 150px, calc(100% - 240px) 92%; }
+html[data-theme="claro"] .why { background-image: var(--x-trazo); background-size: 420px auto; background-position: calc(100% + 110px) -80px; }
+html[data-theme="claro"] .contact { background-image: var(--x-trazo); background-size: 300px auto; background-position: -150px -40px; }
+html[data-theme="claro"] .quote__bg img { filter: invert(1) grayscale(1) contrast(1.5) sepia(1) hue-rotate(185deg) saturate(6); mix-blend-mode: multiply; opacity: 0.7; }
+html[data-theme="claro"] .quote__bg::after { background: linear-gradient(90deg, rgb(var(--bg2-rgb) / 0.92) 0%, rgb(var(--bg2-rgb) / 0.3) 60%, rgb(var(--bg2-rgb) / 0.5) 100%); }
+html[data-theme="claro"] .services::before {
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+  filter: invert(1) grayscale(1) contrast(1.5) sepia(1) hue-rotate(185deg) saturate(6);
+  mask-image: linear-gradient(90deg, transparent 20%, #000 75%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 20%, #000 75%);
+}
+@media (max-width: 640px) {
+  html[data-theme="claro"] .split { background-size: 240px auto; }
+  html[data-theme="claro"] .discover { background-size: 200px auto, 0 0; }
+  html[data-theme="claro"] .why { background-size: 260px auto; }
+  html[data-theme="claro"] .contact { background-size: 200px auto; }
+}
