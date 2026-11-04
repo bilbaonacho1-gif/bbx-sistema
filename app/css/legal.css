@@ -1,0 +1,16 @@
+/* Páginas legales: lectura cómoda, sin adornos */
+.legal-doc { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
+.legal-doc header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 28px; margin-bottom: 36px; border-bottom: 1px solid var(--line); }
+.legal-doc header a.marca { color: #fff; display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.legal-doc header img { width: 88px; height: auto; }
+.legal-doc header small { font-size: 9.5px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); }
+.legal-doc h1 { font-size: clamp(26px, 4vw, 34px); letter-spacing: -0.02em; margin-bottom: 6px; }
+.legal-doc .fecha { color: var(--muted); margin-bottom: 32px; }
+.legal-doc h2 { font-size: 17px; margin: 36px 0 10px; }
+.legal-doc p, .legal-doc li { color: var(--text-2); font-size: 15px; line-height: 1.7; }
+.legal-doc p + p { margin-top: 12px; }
+.legal-doc ul { margin: 10px 0 0; padding-left: 20px; }
+.legal-doc li + li { margin-top: 6px; }
+.legal-doc .nota { margin-top: 28px; padding: 16px 18px; border: 1px solid var(--line-2); border-radius: 10px; font-size: 13.5px; }
+.legal-doc footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 13px; }
+.legal-doc footer a { color: var(--muted); }
