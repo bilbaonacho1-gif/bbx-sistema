@@ -20,7 +20,7 @@
   --header-h: 84px;
 }
 /* Colores del sitio (oscuro) */
-:root, .xcard, .phone, .disc__head {
+:root, .xcard, .phone, .disc__head, .intro {
   --bg-1: #070B14;
   --bg-2: #0A0F1A;
   --surface: #0F1E36;
@@ -1125,4 +1125,56 @@ select option { background: var(--surface); }
 @media (max-width: 640px) {
   .portal-cta__lista div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .portal-cta__acciones .btn { flex: 1 1 auto; }
+}
+
+/* =====================================================================
+   Modo claro (botón sol/luna del encabezado). El oscuro es el predeterminado.
+   Las tarjetas con foto y la apertura conservan su versión oscura.
+   ===================================================================== */
+html[data-theme="claro"] {
+  --bg-1: #E9EDF4;
+  --bg-2: #F5F7FA;
+  --surface: #FFFFFF;
+  --fg: #0A0F1A;
+  --text: #2E3A4F;
+  --muted: #56627A;
+  --accent: #1E5BFF;
+  --accent-hover: #1747CC;
+  --accent-2: #1A4FE0;
+  --on-accent: #FFFFFF;
+  --em-end: #0F1E36;
+  --placeholder: #8A93A6;
+  --error: #B42318;
+  --bg-rgb: 233 237 244;
+  --bg2-rgb: 245 247 250;
+  --surface-rgb: 255 255 255;
+  --fg-rgb: 10 15 26;
+  --accent-rgb: 30 91 255;
+  --accent2-rgb: 26 79 224;
+  --line: rgb(10 15 26 / 0.10);
+  --line-strong: rgb(10 15 26 / 0.18);
+  color-scheme: light;
+}
+/* En modo claro la sección de Servicios toma un tono apenas más oscuro para separarse */
+html[data-theme="claro"] .services { --bg-1: #DDE3EC; --bg-2: #E9EDF4; --bg-rgb: 221 227 236; --bg2-rgb: 233 237 244; }
+
+/* Botón de tema */
+.tema-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.tema-btn .tema-luna { display: none; }
+html[data-theme="claro"] .tema-btn .tema-sol { display: none; }
+html[data-theme="claro"] .tema-btn .tema-luna { display: block; }
+body { transition: background-color 0.3s; }
+
+/* Encabezado: nada se parte en dos renglones */
+.nav a, .nav .btn, .lang-btn { white-space: nowrap; }
+@media (max-width: 1440px) and (min-width: 861px) {
+  .nav { gap: 18px; }
+  .nav-cta { gap: 8px; }
+  .header-inner { gap: 16px; }
+}
+@media (max-width: 1040px) and (min-width: 861px) {
+  .nav { gap: 12px; font-size: 0.8125rem; }
+  .nav .btn-small { padding: 0.6em 0.8em; font-size: 0.8125rem; }
+  .nav-cta .arr { display: none; }
+  .brand-logo { width: 78px; }
 }

@@ -183,6 +183,22 @@ const EN = {
   "t132": "Due date, bank, drawer…",
   "langLabel": "Language: English"
 };
+/* Tema oscuro (predeterminado) o claro; se recuerda en el navegador */
+const temaBtn = $("tema-btn");
+const temaColor = document.querySelector('meta[name="theme-color"]');
+function temaLabel() {
+  const claro = root.getAttribute("data-theme") === "claro";
+  if (lang === "en") return claro ? "Switch to dark mode" : "Switch to light mode";
+  return claro ? "Activar modo oscuro" : "Activar modo claro";
+}
+function aplicarTema(claro) {
+  if (claro) root.setAttribute("data-theme", "claro"); else root.removeAttribute("data-theme");
+  try { localStorage.setItem("bbx-tema", claro ? "claro" : "oscuro"); } catch (e) {}
+  if (temaBtn) { temaBtn.setAttribute("aria-pressed", String(claro)); temaBtn.setAttribute("aria-label", temaLabel()); }
+  if (temaColor) temaColor.setAttribute("content", claro ? "#F2F4F8" : "#0A0F1A");
+}
+if (temaBtn) temaBtn.addEventListener("click", () => aplicarTema(root.getAttribute("data-theme") !== "claro"));
+
 const STR = {
   es: { formError: "Completá tu nombre y teléfono para que podamos responderte.", hello: "Hola BBX, quiero:", name: "Nombre", phone: "Teléfono", amount: "Importe", dueDate: "Fecha de cobro", langLabel: "Idioma: español" },
   en: { formError: "Please enter your name and phone so we can get back to you.", hello: "Hi BBX, I want to:", name: "Name", phone: "Phone", amount: "Amount", dueDate: "Due date", langLabel: EN.langLabel },
@@ -193,6 +209,12 @@ const i18nAttrs = $$("[data-i18n-attr]").flatMap((el) => el.dataset.i18nAttr.spl
   return { el, attr, key, es: el.getAttribute(attr) };
 }));
 let lang = root.lang === "en" ? "en" : "es";
+if (temaBtn) {
+  const claro = root.getAttribute("data-theme") === "claro";
+  temaBtn.setAttribute("aria-pressed", String(claro));
+  temaBtn.setAttribute("aria-label", temaLabel());
+  if (claro && temaColor) temaColor.setAttribute("content", "#F2F4F8");
+}
 const t = (k) => STR[lang][k];
 
 function applyLang(next) {
@@ -205,6 +227,7 @@ function applyLang(next) {
   });
   $("lang-current").textContent = next.toUpperCase();
   $("lang-btn").setAttribute("aria-label", t("langLabel"));
+  if (temaBtn) temaBtn.setAttribute("aria-label", temaLabel());
   $$(".lang-menu [data-lang]").forEach((b) => b.setAttribute("aria-current", String(b.dataset.lang === next)));
   wrapPhrase();
   if (!calm) requestFrame();
